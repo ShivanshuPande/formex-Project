@@ -7,9 +7,9 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-const sans = Sans({
-  variable :""
-})
+// const sans = Sans({
+//   variable :""
+// })
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -36,3 +36,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+//--make it happen
