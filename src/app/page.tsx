@@ -45,6 +45,7 @@ function createGearPath(
 
 export default function Home() {
   const [isTeamOpen, setIsTeamOpen] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-black relative overflow-hidden">
@@ -142,14 +143,22 @@ export default function Home() {
             <span className="text-cyan-400">Ready-to-use parts</span> that accelerate your engineering workflow.
           </p>
 
-          {/* CTA + Team modal trigger */}
+          {/* CTA + modal triggers */}
           <div className="flex flex-col items-center gap-4 justify-center">
-            <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
-              Explore Components
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
+                Explore Components
+              </button>
+              <button
+                onClick={() => setIsInfoOpen(true)}
+                className="px-6 py-3 border border-slate-600 hover:border-cyan-400 text-slate-200 hover:text-cyan-300 text-sm rounded-lg transition-colors bg-black/40 backdrop-blur-sm"
+              >
+                How Formex works
+              </button>
+            </div>
             <button
               onClick={() => setIsTeamOpen(true)}
-              className="px-6 py-3 border border-slate-600 hover:border-cyan-400 text-slate-200 hover:text-cyan-300 text-sm rounded-lg transition-colors bg-black/40 backdrop-blur-sm"
+              className="px-6 py-2 text-xs sm:text-sm text-slate-400 hover:text-cyan-300 transition-colors rounded-lg border border-slate-600"
             >
               Meet the team
             </button>
@@ -159,8 +168,8 @@ export default function Home() {
 
       {/* Team modal */}
       {isTeamOpen && (
-        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/70 backdrop-blur-md">
-          <div className="relative w-full max-w-md mx-4 rounded-3xl border border-cyan-500/20 bg-black p-6 shadow-[0_25px_80px_rgba(0,0,0,0.9)]">
+        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-md">
+          <div className="relative w-full max-w-md mx-4 rounded-3xl border border-cyan-500/20 bg-gradient-to-b from-slate-900/95 via-slate-900/80 to-slate-900/40 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.9)]">
             <button
               onClick={() => setIsTeamOpen(false)}
               className="absolute top-3 right-4 text-slate-500 hover:text-slate-200 text-sm"
@@ -204,6 +213,88 @@ export default function Home() {
                   RB
                 </div>
                 <span>Rohit Brahme</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Info / steps modal */}
+      {isInfoOpen && (
+        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/70 backdrop-blur-md">
+          <div className="relative w-full max-w-md mx-4 rounded-3xl border border-cyan-500/20 bg-black p-6 shadow-[0_25px_80px_rgba(0,0,0,0.9)]">
+            <button
+              onClick={() => setIsInfoOpen(false)}
+              className="absolute top-3 right-4 text-slate-500 hover:text-slate-200 text-sm"
+            >
+              ✕
+            </button>
+
+            <div className="mb-5">
+              <p className="text-[11px] uppercase tracking-[0.3em] text-cyan-400/80">
+                How it works
+              </p>
+              <h2 className="mt-2 text-xl font-semibold text-slate-50">
+                Three simple steps to a clean model
+              </h2>
+              <p className="mt-1 text-xs text-slate-400">
+                Formex turns parametric choices into ready-to-use 3D mechanical components.
+              </p>
+            </div>
+
+            <div className="space-y-3 text-sm text-slate-100">
+              {/* Step 1 */}
+              <div className="flex gap-3 rounded-2xl bg-slate-900/80 border border-slate-800 px-3 py-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-500/40 text-xs font-semibold text-cyan-200">
+                  1
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[11px] uppercase tracking-[0.2em] text-slate-400">
+                    Step 1
+                  </span>
+                  <span className="text-sm text-slate-50">
+                    Select the component
+                  </span>
+                  <span className="text-xs text-slate-400 mt-1">
+                    Pick a part from the library: bearings, gears, fasteners and more.
+                  </span>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex gap-3 rounded-2xl bg-slate-900/80 border border-slate-800 px-3 py-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-500/40 text-xs font-semibold text-cyan-200">
+                  2
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[11px] uppercase tracking-[0.2em] text-slate-400">
+                    Step 2
+                  </span>
+                  <span className="text-sm text-slate-50">
+                    Select the parameters
+                  </span>
+                  <span className="text-xs text-slate-400 mt-1">
+                    Define sizes, tolerances and standards so the component matches your design.
+                  </span>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex gap-3 rounded-2xl bg-slate-900/80 border border-slate-800 px-3 py-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-500/40 text-xs font-semibold text-cyan-200">
+                  3
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[11px] uppercase tracking-[0.2em] text-slate-400">
+                    Step 3
+                  </span>
+                  <span className="text-sm text-slate-50">
+                    View and download
+                  </span>
+                  <span className="text-xs text-slate-400 mt-1">
+                    Preview the 3D model, then download it in the format your tools expect.
+                  </span>
+                </div>
               </div>
             </div>
           </div>
