@@ -252,7 +252,7 @@ export default function Home() {
                     Select the component
                   </span>
                   <span className="text-xs text-slate-400 mt-1">
-                    Pick a part from the library: bearings, gears, fasteners and more.
+                    Pick a part from the library: Washer, nuts, bolt and more.
                   </span>
                 </div>
               </div>
