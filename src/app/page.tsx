@@ -49,23 +49,23 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black relative overflow-hidden">
-      {/* Background Gears */}
+      
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large outlined gear behind hero */}
+        
         <div className="absolute inset-0 flex items-center justify-center">
           <svg
             viewBox="0 0 100 100"
             className="w-[420px] h-[420px] md:w-[520px] md:h-[520px] text-slate-700/25 animate-spin"
             style={{ animationDuration: "45s" }}
           >
-            {/* Math-generated gear outline */}
+            
             <path
               d={createGearPath(18, 30, 40, 50, 50)}
               fill="none"
               stroke="currentColor"
               strokeWidth="1.4"
             />
-            {/* Inner ring */}
+            
             <circle
               cx="50"
               cy="50"
@@ -74,7 +74,7 @@ export default function Home() {
               stroke="currentColor"
               strokeWidth="0.9"
             />
-            {/* Small dashed inner circle to suggest holes */}
+            
             <circle
               cx="50"
               cy="50"
@@ -86,7 +86,7 @@ export default function Home() {
             />
           </svg>
         </div>
-        {/* Large Gear - Top Right */}
+        
         <div className="absolute top-16 right-12 w-24 h-24 opacity-10 animate-spin" style={{ animationDuration: '20s' }}>
           <svg viewBox="0 0 100 100" className="w-full h-full text-slate-600">
             <path d="M50 10c2.2-3.8 8.8-3.8 11 0l5.7 9.9a7 7 0 0 0 6.2 3.8l11.8-.3c4.8-.1 8.2 4.8 6.7 9.4l-2.9 10.8a7 7 0 0 0 2.1 7l8.7 6.8c3.7 2.9 3.7 8.6 0 11.5l-8.7 6.8a7 7 0 0 0-2.1 7l2.9 10.8c1.5 4.6-1.9 9.5-6.7 9.4l-11.8-.3a7 7 0 0 0-6.2 3.8l-5.7 9.9c-2.2 3.8-8.8 3.8-11 0l-5.7-9.9a7 7 0 0 0-6.2-3.8l-11.8.3c-4.8.1-8.2-4.8-6.7-9.4l2.9-10.8a7 7 0 0 0-2.1-7l-8.7-6.8c-3.7-2.9-3.7-8.6 0-11.5l8.7-6.8a7 7 0 0 0 2.1-7L15.5 33c-1.5-4.6 1.9-9.5 6.7-9.4l11.8.3a7 7 0 0 0 6.2-3.8L50 10z"/>
@@ -124,10 +124,6 @@ export default function Home() {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-2 h-2 bg-cyan-400/30 rounded-full animate-pulse"></div>
-      <div className="absolute top-32 right-20 w-1 h-1 bg-cyan-400/40 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-cyan-400/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute bottom-32 right-1/3 w-1 h-1 bg-cyan-400/50 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-20">
         <div className="text-center max-w-4xl mx-auto">
