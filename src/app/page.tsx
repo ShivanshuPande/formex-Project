@@ -151,7 +151,7 @@ export default function Home() {
     <main className="min-h-screen bg-black relative overflow-hidden">
       
       {/* Dotted grid background */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         <div
           className="w-full h-full opacity-20"
           style={{
@@ -166,7 +166,7 @@ export default function Home() {
         />
       </div>
       
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-10">
         
         <div className="absolute inset-0 flex items-center justify-center">
           <svg
@@ -258,19 +258,21 @@ export default function Home() {
           {/* CTA + modal triggers */}
           <div className="flex flex-col items-center gap-4 justify-center">
             <div className="flex flex-col sm:flex-row gap-3">
-              <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
-                <Link href="/component-selection">Explore Components</Link>
+            <Link href="/component-selection">
+              <button className="cursor-pointer px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
+                Explore Components
               </button>
+              </Link>
               <button
                 onClick={() => setIsInfoOpen(true)}
-                className="px-6 py-3 border border-slate-600 hover:border-cyan-400 text-slate-200 hover:text-cyan-300 text-sm rounded-lg transition-colors bg-black/40 backdrop-blur-sm"
+                className="cursor-pointer px-6 py-3 border border-slate-600 hover:border-cyan-400 text-slate-200 hover:text-cyan-300 text-sm rounded-lg transition-colors bg-black/40 backdrop-blur-sm"
               >
                 How Formex works
               </button>
             </div>
             <button
               onClick={() => setIsTeamOpen(true)}
-              className="px-6 py-2 text-xs sm:text-sm text-slate-400 hover:text-cyan-300 transition-colors rounded-lg border border-slate-600"
+              className="cursor-pointer px-6 py-2 text-xs sm:text-sm text-slate-400 hover:text-cyan-300 transition-colors rounded-lg border border-slate-600"
             >
               Meet the team
             </button>
