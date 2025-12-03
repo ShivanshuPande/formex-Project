@@ -36,6 +36,8 @@ export default function SearchBox() {
 
           {/* paperclip icon */}
           <button
+            
+
             type="button"
             aria-label="attach"
             className="p-2 rounded-md hover:bg-neutral-800/40"
@@ -61,8 +63,9 @@ export default function SearchBox() {
 
           <div className="flex items-center gap-2">
             <button
+              onClick={()=>{alert("Your request is processing!! ")}}
               type="button"
-              className="w-10 h-10 rounded-full bg-white/6 flex items-center justify-center hover:scale-[1.03] transition"
+              className="cursor-pointer w-10 h-10 rounded-full bg-white/6 flex items-center justify-center hover:scale-[1.03] transition"
               aria-label="send"
             >
               <ArrowUp className="w-5 h-5 text-white" />
