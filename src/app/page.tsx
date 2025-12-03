@@ -149,6 +149,22 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black relative overflow-hidden">
       
+      {/* Dotted grid background */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="w-full h-full opacity-20"
+          style={{
+            backgroundImage: [
+              "radial-gradient(circle at center, rgba(94,234,212,0.35) 1px, transparent 1px)",
+              "linear-gradient(rgba(15,23,42,0.35) 1px, transparent 1px)",
+              "linear-gradient(90deg, rgba(15,23,42,0.35) 1px, transparent 1px)",
+            ].join(", "),
+            backgroundSize: "24px 24px, 120px 120px, 120px 120px",
+            backgroundPosition: "0 0, 0 0, 0 0",
+          }}
+        />
+      </div>
+      
       <div className="absolute inset-0 overflow-hidden">
         
         <div className="absolute inset-0 flex items-center justify-center">
@@ -186,14 +202,6 @@ export default function Home() {
           </svg>
         </div>
         
-        <div className="absolute top-16 right-12 w-24 h-24 opacity-10 animate-spin" style={{ animationDuration: '20s' }}>
-          <svg viewBox="0 0 100 100" className="w-full h-full text-slate-600">
-            <path d="M50 10c2.2-3.8 8.8-3.8 11 0l5.7 9.9a7 7 0 0 0 6.2 3.8l11.8-.3c4.8-.1 8.2 4.8 6.7 9.4l-2.9 10.8a7 7 0 0 0 2.1 7l8.7 6.8c3.7 2.9 3.7 8.6 0 11.5l-8.7 6.8a7 7 0 0 0-2.1 7l2.9 10.8c1.5 4.6-1.9 9.5-6.7 9.4l-11.8-.3a7 7 0 0 0-6.2 3.8l-5.7 9.9c-2.2 3.8-8.8 3.8-11 0l-5.7-9.9a7 7 0 0 0-6.2-3.8l-11.8.3c-4.8.1-8.2-4.8-6.7-9.4l2.9-10.8a7 7 0 0 0-2.1-7l-8.7-6.8c-3.7-2.9-3.7-8.6 0-11.5l8.7-6.8a7 7 0 0 0 2.1-7L15.5 33c-1.5-4.6 1.9-9.5 6.7-9.4l11.8.3a7 7 0 0 0 6.2-3.8L50 10z"/>
-            <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="2"/>
-            <circle cx="50" cy="50" r="8" fill="currentColor"/>
-          </svg>
-        </div>
-
         {/* Medium Gear - Bottom Left */}
         <div className="absolute bottom-20 left-16 w-16 h-16 opacity-8 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
           <svg viewBox="0 0 100 100" className="w-full h-full text-slate-700">
