@@ -2,6 +2,7 @@
 'use client';
 // this is now a client side component 
 import { useState } from "react";
+import Link from "next/link";
 
 function createGearPath(
   teeth: number,
@@ -236,7 +237,15 @@ export default function Home() {
         <div className="text-center max-w-4xl mx-auto">
           {/* Main Title - Logo Style */}
           <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold text-white mb-8 leading-none tracking-tight">
-            Formex
+            F
+            <span
+              className="relative inline-flex items-center justify-center align-middle mx-2 w-[0.72em] h-[0.72em]"
+              aria-label="double circle representing the letter O"
+            >
+              <span className="absolute inset-0 rounded-full border-[0.08em] border-current" />
+              <span className="absolute inset-[0.18em] rounded-full border-[0.08em] border-current" />
+            </span>
+            rmex
           </h1>
 
           {/* Subtitle */}
@@ -250,7 +259,7 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4 justify-center">
             <div className="flex flex-col sm:flex-row gap-3">
               <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
-                Explore Components
+                <Link href="/components">Explore Components</Link>
               </button>
               <button
                 onClick={() => setIsInfoOpen(true)}
