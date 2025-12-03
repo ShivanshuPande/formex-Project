@@ -258,7 +258,7 @@ export default function Home() {
           {/* CTA + modal triggers */}
           <div className="flex flex-col items-center gap-4 justify-center">
             <div className="flex flex-col sm:flex-row gap-3">
-            <Link href="/component-selection">
+              <Link href="/explore">
               <button className="cursor-pointer px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
                 Explore Components
               </button>

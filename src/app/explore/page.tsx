@@ -1,4 +1,4 @@
-  import ComponentCard from "../components/ui/componentCard";
+  import ComponentCard from "../components/ui/ComponentCard";
   import { FlipWords } from "../components/ui/TextContainer";
 
   export default function Page() {
@@ -24,10 +24,12 @@
         <span className="flex items-center justify-center text-center pt-3 text-2xl">Get your own{""}<FlipWords words={["parameters" , "dimension" , "types"]}/>to life</span>
       </div>
       <div className="flex flex-row items-center justify-around  w-350 z-10">
-        <ComponentCard src="/assets/Screw.png" name="Screw" meta="Screw" href="/"/>
-        <ComponentCard src="/assets/washer.png" name="washer" meta="Washer" href="/"/>
-        <ComponentCard src="/assets/Bolt.png" name="Bolt" meta="Bolt" href="/"/>
-        <ComponentCard src="/assets/Nut.png" name="Nut" meta="Nut" href="/"/>
+      <ComponentCard src="/assets/washer.png" name="washer" meta="Washer" href="/explore/washer"/>
+        <ComponentCard src="/assets/Screw.png" name="Screw" meta="Screw" href="/explore/screw"/>
+        <ComponentCard src="/assets/Nut.png" name="Nut" meta="Nut" href="/explore/nut"/>
+        
+        <ComponentCard src="/assets/Bolt.png" name="Bolt" meta="Bolt" href="/explore/bolt"/>
+        
       </div>
 
     
