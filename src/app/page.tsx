@@ -252,27 +252,27 @@ export default function Home() {
           <p className="text-xl sm:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
             A comprehensive library of parametric 3D mechanical components.
             <br className="hidden sm:block" />
-            <span className="text-cyan-400">Ready-to-use parts</span> that accelerate your engineering workflow.
+            <span className="text-cyan-300">Ready-to-use parts</span> that accelerate your engineering workflow.
           </p>
 
           {/* CTA + modal triggers */}
           <div className="flex flex-col items-center gap-4 justify-center">
             <div className="flex flex-col sm:flex-row gap-3">
               <Link href="/explore">
-              <button className="cursor-pointer px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
+              <button className="cursor-pointer px-8 py-4 bg-neutral-900 hover:bg-neutral-750 text-white font-semibold rounded-lg transition-colors">
                 Explore Components
               </button>
               </Link>
               <button
                 onClick={() => setIsInfoOpen(true)}
-                className="cursor-pointer px-6 py-3 border border-slate-600 hover:border-cyan-400 text-slate-200 hover:text-cyan-300 text-sm rounded-lg transition-colors bg-black/40 backdrop-blur-sm"
+                className="cursor-pointer px-6 py-3 border border-slate-600 hover:border-neutral-400 text-slate-200 hover:text-neutral-300 text-sm rounded-lg transition-colors bg-black/40 backdrop-blur-sm"
               >
                 How Formex works
               </button>
             </div>
             <button
               onClick={() => setIsTeamOpen(true)}
-              className="cursor-pointer px-6 py-2 text-xs sm:text-sm text-slate-400 hover:text-cyan-300 transition-colors rounded-lg border border-slate-600"
+              className="cursor-pointer px-6 py-2 text-xs sm:text-sm text-white hover:text-neutral-300 transition-colors rounded-lg border border-slate-600 bg-black"
             >
               Meet the team
             </button>
