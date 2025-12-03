@@ -259,7 +259,7 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4 justify-center">
             <div className="flex flex-col sm:flex-row gap-3">
               <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
-                <Link href="/components">Explore Components</Link>
+                <Link href="/component-selection">Explore Components</Link>
               </button>
               <button
                 onClick={() => setIsInfoOpen(true)}
