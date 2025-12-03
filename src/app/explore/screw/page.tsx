@@ -15,11 +15,11 @@ export default function Page(){
                     Generate</Button>
             </div>
 
-            {/* MINIMAL changes: add `relative overflow-hidden` so absolute background is confined here */}
-            <div className="col-span-13 relative overflow-hidden flex flex-col-reverse">
+            
+            <div className="col-span-13 relative overflow-hidden flex flex-col-reverse mr-5">
                 <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
                     <div
-                    className="w-full h-full opacity-100"   /* lowered opacity so content is visible */
+                    className="w-full h-full opacity-100"   
                     style={{
                         backgroundImage: [
                         "radial-gradient(circle at center, rgba(94,234,212,0.35) 1px, transparent 1px)",
@@ -33,10 +33,10 @@ export default function Page(){
                 
                  </div>
 
-                 {/* Make this positioned so z-10 is honored and it appears above the dotted layer */}
+
                  
                     <div className="flex flex-row items-center justify-center">
-                        <Button className="w-60 h-14 mb-4 bg-neutral-900 z-10" >Download STL<svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
+                        <Button onClick={()=>{alert("Your Model is being downloaded")}} className="cursor-pointer w-60 h-14 mb-4 bg-neutral-900 z-10" >Download STL<svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3"/>
                         </svg></Button>
                     </div>
