@@ -270,7 +270,7 @@ export default function Home() {
                     Select the parameters
                   </span>
                   <span className="text-xs text-slate-400 mt-1">
-                    Define sizes, tolerances and standards so the component matches your design.
+                    Define sizes, Parameters and standards so the component matches your design.
                   </span>
                 </div>
               </div>
