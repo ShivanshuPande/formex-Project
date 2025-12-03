@@ -1,6 +1,6 @@
 
 'use client';
-
+// this is now a client side component 
 import { useState } from "react";
 
 function createGearPath(
@@ -11,32 +11,131 @@ function createGearPath(
   cy: number
 ) {
   const step = (Math.PI * 2) / teeth;
-  const toothTipWidth = step * 0.35;
-  const toothRootWidth = step * 0.6;
+  
+  // Spur gear proportions: standard gear design ratios
+  // Tooth tip width (addendum face width) - typically 40-45% of pitch
+  const toothTipWidth = step * 0.42;
+  // Tooth root width (dedendum face width) - wider for strength
+  const toothRootWidth = step * 0.58;
+  
+  // Pitch circle radius (standard reference for gear design)
+  const pitchRadius = (innerRadius + outerRadius) / 2;
+  
+  // Root fillet radius (small curve at tooth base for stress relief)
+  const filletRadius = (outerRadius - innerRadius) * 0.15;
+  const filletStartRadius = innerRadius + filletRadius;
 
   let d = "";
+  let firstPoint: [number, number] | null = null;
 
   for (let i = 0; i < teeth; i++) {
     const baseAngle = i * step;
 
+    // Root angles (where teeth meet the inner circle)
     const aRoot1 = baseAngle - toothRootWidth / 2;
+    const aRoot2 = baseAngle + toothRootWidth / 2;
+    
+    // Tip angles (flat top of tooth)
     const aTip1 = baseAngle - toothTipWidth / 2;
     const aTip2 = baseAngle + toothTipWidth / 2;
-    const aRoot2 = baseAngle + toothRootWidth / 2;
+    
+    // Fillet transition angles (where straight flank meets root fillet)
+    const aFillet1 = baseAngle - toothRootWidth / 2 + (toothRootWidth - toothTipWidth) / 2 * 0.3;
+    const aFillet2 = baseAngle + toothRootWidth / 2 - (toothRootWidth - toothTipWidth) / 2 * 0.3;
 
-    const points = [
-      [cx + innerRadius * Math.cos(aRoot1), cy + innerRadius * Math.sin(aRoot1)],
-      [cx + outerRadius * Math.cos(aTip1), cy + outerRadius * Math.sin(aTip1)],
-      [cx + outerRadius * Math.cos(aTip2), cy + outerRadius * Math.sin(aTip2)],
-      [cx + innerRadius * Math.cos(aRoot2), cy + innerRadius * Math.sin(aRoot2)],
+    // Calculate key points
+    const root1: [number, number] = [
+      cx + innerRadius * Math.cos(aRoot1),
+      cy + innerRadius * Math.sin(aRoot1)
+    ];
+    
+    // Fillet start points (where straight flank begins)
+    const filletStart1: [number, number] = [
+      cx + filletStartRadius * Math.cos(aFillet1),
+      cy + filletStartRadius * Math.sin(aFillet1)
+    ];
+    
+    // Tooth tip points (flat top)
+    const tip1: [number, number] = [
+      cx + outerRadius * Math.cos(aTip1),
+      cy + outerRadius * Math.sin(aTip1)
+    ];
+    const tip2: [number, number] = [
+      cx + outerRadius * Math.cos(aTip2),
+      cy + outerRadius * Math.sin(aTip2)
+    ];
+    
+    // Fillet start point (right side)
+    const filletStart2: [number, number] = [
+      cx + filletStartRadius * Math.cos(aFillet2),
+      cy + filletStartRadius * Math.sin(aFillet2)
+    ];
+    
+    const root2: [number, number] = [
+      cx + innerRadius * Math.cos(aRoot2),
+      cy + innerRadius * Math.sin(aRoot2)
     ];
 
     if (i === 0) {
-      d += `M ${points[0][0]} ${points[0][1]} `;
+      d += `M ${root1[0]} ${root1[1]} `;
+      firstPoint = root1;
     }
-    for (let j = 1; j < points.length; j++) {
-      d += `L ${points[j][0]} ${points[j][1]} `;
+    
+    // Small fillet at root (left side) - smooth transition from root to flank
+    const filletControl1: [number, number] = [
+      cx + (innerRadius + filletRadius * 0.5) * Math.cos(aRoot1 + (aFillet1 - aRoot1) * 0.5),
+      cy + (innerRadius + filletRadius * 0.5) * Math.sin(aRoot1 + (aFillet1 - aRoot1) * 0.5)
+    ];
+    d += `Q ${filletControl1[0]} ${filletControl1[1]} ${filletStart1[0]} ${filletStart1[1]} `;
+    
+    // Straight flank (left side) - characteristic of spur gear
+    d += `L ${tip1[0]} ${tip1[1]} `;
+    
+    // Flat tooth top (spur gear characteristic)
+    d += `L ${tip2[0]} ${tip2[1]} `;
+    
+    // Straight flank (right side)
+    d += `L ${filletStart2[0]} ${filletStart2[1]} `;
+    
+    // Small fillet at root (right side)
+    const filletControl2: [number, number] = [
+      cx + (innerRadius + filletRadius * 0.5) * Math.cos(aFillet2 + (aRoot2 - aFillet2) * 0.5),
+      cy + (innerRadius + filletRadius * 0.5) * Math.sin(aFillet2 + (aRoot2 - aFillet2) * 0.5)
+    ];
+    d += `Q ${filletControl2[0]} ${filletControl2[1]} ${root2[0]} ${root2[1]} `;
+    
+    // Connect to next tooth root along inner circle
+    if (i < teeth - 1) {
+      const nextBaseAngle = (i + 1) * step;
+      const nextRoot1 = [
+        cx + innerRadius * Math.cos(nextBaseAngle - toothRootWidth / 2),
+        cy + innerRadius * Math.sin(nextBaseAngle - toothRootWidth / 2)
+      ];
+      // Smooth arc along inner circle
+      const rootControlAngle = (aRoot2 + nextBaseAngle - toothRootWidth / 2) / 2;
+      const rootControl: [number, number] = [
+        cx + innerRadius * Math.cos(rootControlAngle),
+        cy + innerRadius * Math.sin(rootControlAngle)
+      ];
+      d += `Q ${rootControl[0]} ${rootControl[1]} ${nextRoot1[0]} ${nextRoot1[1]} `;
     }
+  }
+
+  // Close the path smoothly
+  if (firstPoint) {
+    const lastRootAngle = (teeth - 1) * step + toothRootWidth / 2;
+    const firstRootAngle = -toothRootWidth / 2;
+    // Calculate midpoint angle, handling wrap-around
+    let rootControlAngle = (lastRootAngle + firstRootAngle + Math.PI * 2) / 2;
+    // Normalize to [0, 2π]
+    while (rootControlAngle > Math.PI * 2) rootControlAngle -= Math.PI * 2;
+    while (rootControlAngle < 0) rootControlAngle += Math.PI * 2;
+    
+    const rootControl: [number, number] = [
+      cx + innerRadius * Math.cos(rootControlAngle),
+      cy + innerRadius * Math.sin(rootControlAngle)
+    ];
+    d += `Q ${rootControl[0]} ${rootControl[1]} ${firstPoint[0]} ${firstPoint[1]} `;
   }
 
   d += "Z";
@@ -55,12 +154,12 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center">
           <svg
             viewBox="0 0 100 100"
-            className="w-[420px] h-[420px] md:w-[520px] md:h-[520px] text-slate-700/25 animate-spin"
+            className="w-[560px] h-[560px] md:w-[680px] md:h-[680px] text-slate-500/25 animate-spin"
             style={{ animationDuration: "45s" }}
           >
             
             <path
-              d={createGearPath(18, 30, 40, 50, 50)}
+              d={createGearPath(18, 40, 50, 50, 50)}
               fill="none"
               stroke="currentColor"
               strokeWidth="1.4"
@@ -69,7 +168,7 @@ export default function Home() {
             <circle
               cx="50"
               cy="50"
-              r="23"
+              r="28"
               fill="none"
               stroke="currentColor"
               strokeWidth="0.9"
@@ -78,7 +177,7 @@ export default function Home() {
             <circle
               cx="50"
               cy="50"
-              r="11"
+              r="14"
               fill="none"
               stroke="currentColor"
               strokeWidth="0.8"
