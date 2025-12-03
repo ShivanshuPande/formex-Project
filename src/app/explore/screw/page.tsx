@@ -1,7 +1,9 @@
 "use client"
 import { Button } from "@/components/ui/button";
+import SearchBox from "@/components/ui/Chatbox";
 import ChoiceCard from "@/components/ui/ChoiceCard";
 import ChoiceSlider from "@/components/ui/ChoiceSlider";
+import Vantages from "@/components/ui/Vantages";
 
 export default function Page(){
     return (
@@ -16,7 +18,7 @@ export default function Page(){
             </div>
 
             
-            <div className="col-span-13 relative overflow-hidden flex flex-col-reverse mr-5">
+            <div className="col-span-13 relative overflow-hidden flex flex-col-reverse">
                 <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
                     <div
                     className="w-full h-full opacity-100"   
@@ -36,6 +38,7 @@ export default function Page(){
 
                  
                     <div className="flex flex-row items-center justify-center">
+                        
                         <Button onClick={()=>{alert("Your Model is being downloaded")}} className="cursor-pointer w-60 h-14 mb-4 bg-neutral-900 z-10" >Download STL<svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3"/>
                         </svg></Button>
@@ -43,7 +46,11 @@ export default function Page(){
                  
             </div>
 
-            <div className="col-span-6 bg-blue-300 z-10"></div>
+            <div className="col-span-6  z-10">
+                <Vantages title="Advantages" point1="Strong & reliable holding power" point2="Easy to assemble and disassemble" point3="Good precision & alignment"/>
+                <Vantages title="Disadvantages" point1="Slower installation compared to nails or rivets" point2="Thread damage over time" point3="Not ideal for vibration-heavy environments"/>
+                <SearchBox/>
+            </div>
 
         </div>
     )
