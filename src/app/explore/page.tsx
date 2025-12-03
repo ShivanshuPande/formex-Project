@@ -1,5 +1,5 @@
-  import ComponentCard from "../components/ui/ComponentCard";
-  import { FlipWords } from "../components/ui/TextContainer";
+  import ComponentCard from "../../components/ui/ComponentCard";
+  import { FlipWords } from "../../components/ui/TextContainer";
 
   export default function Page() {
     return <main className="text-white min-h-screen bg-black relative overflow-hidden"> 
@@ -33,6 +33,6 @@
       </div>
 
     
-    </div>;
+    </div>
     </main>
   }
